@@ -1,10 +1,15 @@
 Enterprise Task Management System (To-Do API)
+
 Πληροφορίες Φοιτητή
 
 Ονοματεπώνυμο: Διονύσης Αλεξόπουλος 
+
 Student ID: 2331909 
+
 Πρόγραμμα: BSc in Computing 
+
 Μάθημα: SWE6002 - Enterprise Systems Development 
+
 Επιβλέπων Καθηγητής: Σπύρος Μαύρος 
 
 
