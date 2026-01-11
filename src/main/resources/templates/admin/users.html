@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>User Management | Admin</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+
+<div class="container">
+
+  <div style="margin-bottom: 20px;">
+    <a th:href="@{/dashboard}" class="btn btn-outline">
+      <i data-feather="arrow-left"></i> Back to Dashboard
+    </a>
+  </div>
+
+  <div class="glass-card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <h2>User Management</h2>
+      <span class="badge-medium">Admin Zone</span>
+    </div>
+
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Roles</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="user : ${users}">
+        <td th:text="${user.id}">1</td>
+
+        <td th:text="${user.username}" style="font-weight: bold;">admin</td>
+
+        <td th:text="${user.name ?: '-'}">System Admin</td>
+
+        <td th:text="${user.email}">admin@mail.com</td>
+
+        <td>
+            <span th:each="role : ${user.roles}"
+                  th:text="${role.name}"
+                  style="background: #edf2f7; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-right: 5px;">
+                ADMIN
+            </span>
+        </td>
+
+        <td>
+            <span th:if="${user.username == #authentication.name}" style="color: var(--text-muted); font-style: italic;">
+                (Current User)
+            </span>
+
+          <a th:unless="${user.username == #authentication.name}"
+             th:href="@{/admin/deleteUser/{id}(id=${user.id})}"
+             class="btn btn-danger"
+             style="padding: 5px 10px; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 4px;"
+             onclick="return confirm('⚠️ ΠΡΟΣΟΧΗ: ΚΙΝΔΥΝΟΣ ΑΠΩΛΕΙΑΣ ΔΕΔΟΜΕΝΩΝ!\n\nΠρόκειται να διαγράψετε οριστικά τον χρήστη.\n\nΑν ο χρήστης έχει ενεργές Εργασίες (Tasks), αυτές θα διαγραφούν ΜΑΖΙ του.\n\nΕίστε σίγουρος ότι θέλετε να προχωρήσετε;');">
+            <i data-feather="trash-2" style="width: 14px; height: 14px;"></i> Delete
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<script>
+  /* global feather */
+  feather.replace()
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | TMS</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="login-wrapper">
+
+<div class="glass-card login-card">
+    <h1 style="color: var(--primary);">Login</h1>
+    <p style="color: var(--text-muted); margin-bottom: 30px;">Welcome to Task Management System</p>
+
+    <div th:if="${param.error}" style="background: #fff5f5; color: var(--danger); padding: 10px; border-radius: 8px; margin-bottom: 20px;">
+        Invalid credentials.
+    </div>
+    <div th:if="${param.logout}" style="background: #f0fff4; color: var(--success); padding: 10px; border-radius: 8px; margin-bottom: 20px;">
+        Logged out successfully.
+    </div>
+
+    <form th:action="@{/login}" method="post">
+        <div style="margin-bottom: 15px; text-align: left;">
+            <label for="username" style="font-weight: bold; font-size: 0.9rem;">Username</label>
+            <input id="username" type="text" name="username" placeholder="Enter username" required>
+        </div>
+
+        <div style="margin-bottom: 25px; text-align: left;">
+            <label for="password" style="font-weight: bold; font-size: 0.9rem;">Password</label>
+            <input id="password" type="password" name="password" placeholder="Enter password" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+            Sign In
+        </button>
+    </form>
+
+    <p style="margin-top: 20px; font-size: 0.9rem;">
+        No account? <a th:href="@{/register}" style="color: var(--primary); font-weight: bold; text-decoration: none;">Register here</a>
+    </p>
+</div>
+
+</body>
+</html>

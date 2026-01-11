@@ -1,0 +1,104 @@
+:root {
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    /* Pastel Gradients Background */
+    --bg-gradient: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    --glass-bg: rgba(255, 255, 255, 0.9);
+    --glass-border: rgba(255, 255, 255, 0.8);
+    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    --radius: 16px;
+
+    /* Colors */
+    --text-main: #2d3748;
+    --text-muted: #718096;
+    --primary: #4facfe;      /* Blue */
+    --primary-dark: #00f2fe; /* Cyan */
+    --danger: #ff5858;       /* Red */
+    --success: #43e97b;      /* Green */
+    --warning: #fa709a;      /* Pink/Orange */
+}
+
+body {
+    font-family: var(--font-main), sans-serif;
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    color: var(--text-main);
+    margin: 0;
+    min-height: 100vh;
+}
+
+/* Glass Card */
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 30px;
+    box-shadow: var(--shadow);
+    margin-bottom: 25px;
+}
+
+/* Typography */
+h1, h2, h3 { margin-top: 0; color: #1a202c; }
+h2 { color: #3182ce; }
+
+/* Inputs */
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #edf2f7;
+    border-radius: 10px;
+    background: #fff;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: all 0.2s;
+}
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.2);
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s;
+}
+.btn:hover { transform: translateY(-2px); }
+
+.btn-primary { background: linear-gradient(to right, #4facfe, #00f2fe); }
+.btn-danger  { background: linear-gradient(to right, #ff5858, #f09819); }
+.btn-success { background: linear-gradient(to right, #43e97b, #38f9d7); }
+.btn-warning { background: linear-gradient(to right, #fa709a, #fee140); color: white; }
+.btn-outline { background: white; border: 2px solid #e2e8f0; color: var(--text-main); }
+
+/* Table */
+table { width: 100%; border-collapse: separate; border-spacing: 0 8px; margin-top: 10px; }
+th { text-align: left; padding: 15px; color: var(--text-muted); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+td { background: white; padding: 15px; border-top: 1px solid #edf2f7; border-bottom: 1px solid #edf2f7; }
+tr td:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-left: 1px solid #edf2f7; }
+tr td:last-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-right: 1px solid #edf2f7; }
+
+/* Status Badges */
+.badge-high { color: #e53e3e; background: #fff5f5; padding: 5px 10px; border-radius: 8px; font-weight: bold; font-size: 0.85rem; }
+.badge-medium { color: #d69e2e; background: #fffff0; padding: 5px 10px; border-radius: 8px; font-weight: bold; font-size: 0.85rem; }
+.badge-low { color: #38a169; background: #f0fff4; padding: 5px 10px; border-radius: 8px; font-weight: bold; font-size: 0.85rem; }
+
+/* Login Center */
+.login-wrapper { display: flex; justify-content: center; align-items: center; height: 100vh; }
+.login-card { width: 100%; max-width: 400px; text-align: center; }

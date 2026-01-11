@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | TMS</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="glass-card" style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <h2>Task Management System</h2>
+            <span style="color: var(--text-muted);">Logged in as: <b th:text="${#authentication.name}">User</b></span>
+        </div>
+        <div style="display: flex; gap: 10px;">
+            <a th:href="@{/admin/users}" class="btn btn-warning" sec:authorize="hasRole('ADMIN')">
+                <i data-feather="users"></i> Users
+            </a>
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" class="btn btn-danger">
+                    <i data-feather="log-out"></i> Logout
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div th:if="${overdueCount > 0}" class="glass-card" style="background: rgba(255, 77, 77, 0.1); border-left: 5px solid #ff4d4d; margin-bottom: 20px;">
+        <p style="color: #ff4d4d; font-weight: bold; margin: 0; display: flex; align-items: center; gap: 10px;">
+            <i data-feather="alert-circle"></i>
+            Attention: You have <span th:text="${overdueCount}">0</span> overdue tasks!
+        </p>
+    </div>
+
+    <div class="glass-card">
+        <h3><i data-feather="plus-circle" style="vertical-align: middle;"></i> New Mission</h3>
+        <form th:action="@{/addTask}" th:object="${newTask}" method="post" style="display: flex; gap: 15px; align-items: flex-end; flex-wrap: wrap;">
+            <div style="flex: 2; min-width: 200px;">
+                <label for="titleInput" style="font-weight: bold; font-size: 0.9rem; margin-bottom: 5px; display: block;">Title</label>
+                <input id="titleInput" type="text" th:field="*{title}" placeholder="What to do?" required>
+            </div>
+            <div style="flex: 1; min-width: 150px;">
+                <label for="categoryInput" style="font-weight: bold; font-size: 0.9rem; margin-bottom: 5px; display: block;">Category</label>
+                <input id="categoryInput" type="text" th:field="*{category}" placeholder="e.g. Uni">
+            </div>
+            <div style="flex: 1; min-width: 150px;">
+                <label for="dateInput" style="font-weight: bold; font-size: 0.9rem; margin-bottom: 5px; display: block;">Deadline</label>
+                <input id="dateInput" type="date" th:field="*{dueDate}">
+            </div>
+            <div style="flex: 1; min-width: 150px;">
+                <label for="priorityInput" style="font-weight: bold; font-size: 0.9rem; margin-bottom: 5px; display: block;">Priority</label>
+                <select id="priorityInput" th:field="*{priority}">
+                    <option value="LOW">Low</option>
+                    <option value="MEDIUM">Medium</option>
+                    <option value="HIGH">High</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success" style="height: 48px; margin-bottom: 1px;">Add Task</button>
+        </form>
+    </div>
+
+    <div class="glass-card">
+        <h3><i data-feather="search" style="vertical-align: middle;"></i> Search & Filter</h3>
+
+        <form th:action="@{/dashboard}" method="get" style="display: flex; gap: 15px; align-items: flex-end; flex-wrap: wrap; margin-top: 10px;">
+            <div style="flex: 2;">
+                <label for="searchCategory" style="font-weight: bold; font-size: 0.8rem;">By Category</label>
+                <input id="searchCategory" type="text" name="searchCategory" placeholder="Search categories...">
+            </div>
+            <div style="flex: 1;">
+                <label for="searchDate" style="font-weight: bold; font-size: 0.8rem;">By Date</label>
+                <input id="searchDate" type="date" name="searchDate">
+            </div>
+            <button type="submit" class="btn btn-primary" style="height: 48px;">Search</button>
+            <a th:href="@{/dashboard}" class="btn btn-outline" style="text-decoration: none; padding: 12px; border: 1px solid #ccc;">Clear</a>
+        </form>
+    </div>
+
+    <div class="glass-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <h3>Active Missions</h3>
+            <div>
+                <label for="filterSelect" style="font-weight: bold; margin-right: 5px;">Filter by Priority:</label>
+                <select id="filterSelect" onchange="filterTable()" style="padding: 6px; width: auto;">
+                    <option value="ALL">Show All</option>
+                    <option value="HIGH">High Only</option>
+                    <option value="MEDIUM">Medium Only</option>
+                    <option value="LOW">Low Only</option>
+                </select>
+            </div>
+        </div>
+
+        <table id="mytaskTable">
+            <thead>
+            <tr>
+                <th>Mission Title</th>
+                <th>Category</th>
+                <th>Deadline</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="task : ${tasks}">
+                <td th:text="${task.title}" th:style="${task.completed ? 'text-decoration: line-through; opacity: 0.6;' : 'font-weight: 500;'}"></td>
+                <td th:text="${task.category}" style="color: var(--text-muted); font-size: 0.9rem;"></td>
+                <td th:text="${task.dueDate}"></td>
+                <td>
+                    <span th:text="${task.priority}" th:class="${'badge-' + task.priority.toLowerCase()}"></span>
+                </td>
+                <td th:text="${task.completed ? 'Done' : 'Pending'}" th:style="${task.completed ? 'color: var(--success); font-weight: bold;' : 'color: var(--warning); font-weight: bold;'}"></td>
+                <td>
+                    <div style="display: flex; gap: 8px;">
+                        <a th:href="@{/toggleTask/{id}(id=${task.id})}" class="btn btn-primary" style="padding: 6px 10px;"><i data-feather="check"></i></a>
+                        <a th:href="@{/edit/{id}(id=${task.id})}" class="btn btn-warning" style="padding: 6px 10px;"><i data-feather="edit-2"></i></a>
+                        <a th:href="@{/deleteTask/{id}(id=${task.id})}" class="btn btn-danger" style="padding: 6px 10px;"><i data-feather="trash-2"></i></a>
+                    </div>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(tasks)}">
+                <td colspan="6" style="text-align: center; padding: 40px; color: var(--text-muted);">No tasks found. Everything is clear! ☀️</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    /* global feather */
+    feather.replace();
+
+    function filterTable() {
+        const filter = document.getElementById("filterSelect").value.toUpperCase();
+        const tr = document.getElementById("mytaskTable").getElementsByTagName("tr");
+        for (let i = 1; i < tr.length; i++) {
+            const td = tr[i].getElementsByTagName("td")[3];
+            if (td) {
+                const txtValue = td.textContent || td.innerText;
+                tr[i].style.display = (filter === "ALL" || txtValue.trim().toUpperCase() === filter) ? "" : "none";
+            }
+        }
+    }
+</script>
+</body>
+</html>

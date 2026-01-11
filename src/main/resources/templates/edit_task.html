@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Task | TMS</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+
+<div class="container" style="max-width: 500px; margin-top: 60px;">
+
+    <div class="glass-card">
+        <h2 style="text-align: center; margin-bottom: 25px;">Edit Task</h2>
+
+        <form th:action="@{/updateTask}" th:object="${task}" method="post">
+
+            <input type="hidden" th:field="*{id}">
+
+            <div style="margin-bottom: 15px;">
+                <label for="titleInput" style="font-weight: bold; font-size: 0.9rem; margin-bottom: 5px; display: block;">Title</label>
+                <input id="titleInput" type="text" th:field="*{title}" placeholder="Task Title" required>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label for="categoryInput" style="font-weight: bold; font-size: 0.9rem; margin-bottom: 5px; display: block;">Category</label>
+                <input id="categoryInput" type="text" th:field="*{category}" placeholder="e.g. Work, Uni" required>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label for="dateInput" style="font-weight: bold; font-size: 0.9rem; margin-bottom: 5px; display: block;">Due Date</label>
+                <input id="dateInput" type="date" th:field="*{dueDate}">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label for="priorityInput" style="font-weight: bold; font-size: 0.9rem; margin-bottom: 5px; display: block;">Priority</label>
+                <select id="priorityInput" th:field="*{priority}">
+                    <option value="LOW">Low</option>
+                    <option value="MEDIUM">Medium</option>
+                    <option value="HIGH">High</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <label for="statusInput" style="font-weight: bold; font-size: 0.9rem; margin-bottom: 5px; display: block;">Status</label>
+                <select id="statusInput" th:field="*{completed}">
+                    <option value="false">Pending</option>
+                    <option value="true">Completed</option>
+                </select>
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+                <button type="submit" class="btn btn-success" style="flex: 1; justify-content: center; display: flex; align-items: center; gap: 5px;">
+                    <i data-feather="save"></i> Save Changes
+                </button>
+
+                <a th:href="@{/dashboard}" class="btn btn-outline" style="flex: 1; justify-content: center; border: 1px solid #ccc; text-align: center; text-decoration: none; display: flex; align-items: center;">
+                    Cancel
+                </a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<script>
+    /* global feather */
+    feather.replace();
+</script>
+
+</body>
+</html>
