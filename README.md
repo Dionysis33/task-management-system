@@ -5,12 +5,48 @@
 </p>
 
 <p align="center">
-  <img alt="Java 21" src="https://img.shields.io/badge/Java-21-orange.svg">
-  <img alt="Spring Boot 3.3" src="https://img.shields.io/badge/Spring%20Boot-3.3-brightgreen.svg">
-  <img alt="Spring Security 6" src="https://img.shields.io/badge/Spring%20Security-6-green.svg">
-  <img alt="MySQL" src="https://img.shields.io/badge/Database-MySQL-blue.svg">
-  <img alt="Maven" src="https://img.shields.io/badge/Build-Maven-red.svg">
-  <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg">
+  <a href="#project-overview">
+    <img alt="Overview" src="https://img.shields.io/badge/Overview-Project-blue.svg">
+  </a>
+  <a href="#role-relevance">
+    <img alt="Role Relevance" src="https://img.shields.io/badge/Role-Relevance-2ea44f.svg">
+  </a>
+  <a href="#key-features">
+    <img alt="Features" src="https://img.shields.io/badge/Features-Core%20Functionality-purple.svg">
+  </a>
+  <a href="#tech-stack">
+    <img alt="Tech Stack" src="https://img.shields.io/badge/Tech-Stack-orange.svg">
+  </a>
+  <a href="#architecture-and-design">
+    <img alt="Architecture" src="https://img.shields.io/badge/Architecture-N--Tier-blueviolet.svg">
+  </a>
+  <a href="#how-to-run-locally">
+    <img alt="Run Locally" src="https://img.shields.io/badge/Run-Locally-success.svg">
+  </a>
+  <a href="#demo-access">
+    <img alt="Demo Access" src="https://img.shields.io/badge/Demo-Access-yellow.svg">
+  </a>
+  <a href="#license">
+    <img alt="License" src="https://img.shields.io/badge/License-MIT-yellow.svg">
+  </a>
+</p>
+
+<p align="center">
+  <a href="#tech-stack">
+    <img alt="Java 21" src="https://img.shields.io/badge/Java-21-orange.svg">
+  </a>
+  <a href="#tech-stack">
+    <img alt="Spring Boot 3.3" src="https://img.shields.io/badge/Spring%20Boot-3.3-brightgreen.svg">
+  </a>
+  <a href="#tech-stack">
+    <img alt="Spring Security 6" src="https://img.shields.io/badge/Spring%20Security-6-green.svg">
+  </a>
+  <a href="#tech-stack">
+    <img alt="MySQL" src="https://img.shields.io/badge/Database-MySQL-blue.svg">
+  </a>
+  <a href="#tech-stack">
+    <img alt="Maven" src="https://img.shields.io/badge/Build-Maven-red.svg">
+  </a>
 </p>
 
 <p align="center">
@@ -18,7 +54,7 @@
     <img alt="Source Code" src="https://img.shields.io/badge/Source-Code-3776AB.svg">
   </a>
   <a href="./pom.xml">
-    <img alt="Maven Project" src="https://img.shields.io/badge/Project-Maven%20pom.xml-C71A36.svg">
+    <img alt="Maven pom.xml" src="https://img.shields.io/badge/Maven-pom.xml-C71A36.svg">
   </a>
   <a href="./DEVELOPMENT_LOG.md">
     <img alt="Development Log" src="https://img.shields.io/badge/Development-Log-yellow.svg">
@@ -35,16 +71,32 @@
 </p>
 
 <p align="center">
-  <img alt="Architecture" src="https://img.shields.io/badge/Architecture-N--Tier-blueviolet.svg">
-  <img alt="Pattern DTO" src="https://img.shields.io/badge/Pattern-DTO-success.svg">
-  <img alt="Pattern Repository" src="https://img.shields.io/badge/Pattern-Repository-success.svg">
-  <img alt="RBAC" src="https://img.shields.io/badge/Security-RBAC-critical.svg">
-  <img alt="Portfolio Project" src="https://img.shields.io/badge/Portfolio-Project-2ea44f.svg">
+  <a href="#architecture-and-design">
+    <img alt="N-Tier Architecture" src="https://img.shields.io/badge/Architecture-N--Tier-blueviolet.svg">
+  </a>
+  <a href="#architecture-and-design">
+    <img alt="DTO Pattern" src="https://img.shields.io/badge/Pattern-DTO-success.svg">
+  </a>
+  <a href="#architecture-and-design">
+    <img alt="Repository Pattern" src="https://img.shields.io/badge/Pattern-Repository-success.svg">
+  </a>
+  <a href="#main-functionality">
+    <img alt="RBAC" src="https://img.shields.io/badge/Security-RBAC-critical.svg">
+  </a>
+  <a href="#what-i-built">
+    <img alt="Portfolio Project" src="https://img.shields.io/badge/Portfolio-Project-2ea44f.svg">
+  </a>
 </p>
 
-A full-stack task management web application built with **Java 21**, **Spring Boot 3.3**, **Spring Security 6**, and **MySQL**.
+---
+
+## Project Overview
+
+The **Enterprise Task Management System** is a full-stack task management web application built with **Java 21**, **Spring Boot 3.3**, **Spring Security 6**, and **MySQL**.
 
 This project was developed as part of the **SWE6002 - Enterprise Systems Development** module and demonstrates enterprise application architecture, authentication, role-based access control, CRUD workflows, database persistence, and secure data handling using modern Java technologies.
+
+The application is designed to help users organize academic, personal, and work-related tasks through a secure web interface.
 
 ---
 
@@ -55,14 +107,6 @@ This project was developed as part of the **SWE6002 - Enterprise Systems Develop
 **Supervisor:** Spyros Mavros  
 
 > Note: This repository is presented as both an academic submission and a software engineering portfolio project.
-
----
-
-## Project Overview
-
-The **Enterprise Task Management System** is a web-based application designed to help users organize academic, personal, and work-related tasks.
-
-The application supports user registration, login, role-based access control, task creation, task editing, task filtering, and admin-level user management. It follows an **N-tier architecture** to separate responsibilities between the controller, service, repository, and data transfer layers.
 
 ---
 
