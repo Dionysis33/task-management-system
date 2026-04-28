@@ -5,6 +5,15 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/Dionysis33/task-management-system/actions/workflows/maven.yml">
+    <img alt="Java CI with Maven" src="https://github.com/Dionysis33/task-management-system/actions/workflows/maven.yml/badge.svg?branch=master">
+  </a>
+  <a href="./LICENSE">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg">
+  </a>
+</p>
+
+<p align="center">
   <a href="#project-overview">
     <img alt="Overview" src="https://img.shields.io/badge/Overview-Project-blue.svg">
   </a>
@@ -25,9 +34,6 @@
   </a>
   <a href="#demo-access">
     <img alt="Demo Access" src="https://img.shields.io/badge/Demo-Access-yellow.svg">
-  </a>
-  <a href="#license">
-    <img alt="License" src="https://img.shields.io/badge/License-MIT-yellow.svg">
   </a>
 </p>
 
