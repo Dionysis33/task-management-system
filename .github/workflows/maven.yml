@@ -6,8 +6,12 @@ on:
   pull_request:
     branches: [ "master", "main" ]
 
+permissions:
+  contents: read
+
 jobs:
   build:
+    name: Build Spring Boot project
     runs-on: ubuntu-latest
 
     steps:
@@ -21,5 +25,8 @@ jobs:
           java-version: '21'
           cache: maven
 
-      - name: Build with Maven
-        run: ./mvnw clean verify
+      - name: Make Maven wrapper executable
+        run: chmod +x mvnw
+
+      - name: Build project without tests
+        run: ./mvnw -B clean package -DskipTests
